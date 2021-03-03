@@ -1,0 +1,495 @@
+/* COLOR REFERENCE */
+/*
+    background: #f1faee
+    nav-buttons: #457b9d
+    content-buttons: #99c7c8
+    content-buttons hover:#7b9fa1
+
+*/
+
+/* Global Styles */
+* {
+    padding: 0;
+    margin: 0;
+    /* outline: 1px solid red; */
+    font-size: 12pt;
+}
+.transition{
+    transition: max-height 0.75s cubic-bezier(0,1,0,1);
+}
+.transition{
+    transition: transform 0.3s ease;
+}
+.transition{
+    transition: 0.3s ease;
+}
+button, li{
+    cursor: pointer;
+}
+a.close {
+    position: relative;
+    z-index: 20;
+    width: 25px;
+    height: 25px;
+    opacity: 0.3;
+}
+a.close:hover {
+    opacity: 1;
+}
+a.close:before, .close:after {
+    right: 15px;
+    position: absolute;
+    content: ' ';
+    height: 25px;
+    width: 3px;
+    background-color: #1d3557;
+}
+a.close:before {
+    transform: rotate(45deg);
+}
+a.close:after {
+    transform: rotate(-45deg);
+}
+  
+
+/* Main Container Styles */
+body{
+    font-size: 1em;
+    background-color: #f1faee;
+    color: #1d3557;
+}
+#container{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    min-height: calc(100vh - 40px);
+}
+#app-heading{
+    /* margin: 0 0 20px 0; */
+    text-align: center;
+    font-size: 2em;
+}
+#content-container{
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+}
+#content-container > *{
+    margin: 0 0 10px 0;
+}
+#content-container > *:nth-last-child(1){
+    margin: 0;
+}
+#popup{
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    min-height: calc(100% - 40px);
+    height: 100vh;
+    width: calc(100% - 40px);
+    padding: 20px;
+    max-height: 0;
+    opacity: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#reminders{
+    z-index: 30;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    padding: 10px;
+    max-height: 0;
+    opacity: 0;
+}
+
+/* Content Button & Button Container Styles */
+div.home-button-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+button.main-button{
+    padding: 15px;
+    margin: 0 0 20px 0;
+    border-style: solid;
+    border-color: #457b9d;
+    border-width: 3px;
+    border-radius: 10px;
+    background-color: #f1faee;
+    min-width: 50%;
+    text-align: center;
+}
+button.main-button:hover{
+    box-shadow: -5px 5px 0 2px rgba(38,68,86,0.5);
+    background-color: #457b9d;
+    color: #f1faee;
+}
+
+div.content-button-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+div.content-button-container > * {
+    margin: 0 10px 0 0;
+}
+div.content-button-container:nth-last-child(1){
+    margin: 0;
+}
+button.content-button{
+    padding: 10px;
+    border-style: solid;
+    border-color: #457b9d;
+    border-radius: 10px;
+    border-width: 3px;
+    background-color: transparent;
+}
+button.content-button:hover{
+    background-color:  #457b9d;
+    color: #f1faee;
+}
+#week-of-text h2.subheading{
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+#week-of-text button{
+
+}
+
+/* Lists */
+#main-list{
+    list-style: none;
+    width: 75%;
+    padding: 0 20px;
+}
+#main-list li.list-item{
+    padding: 15px;
+    margin: 0 0 10px 0;
+    width: 100%;
+    border-style: solid;
+    border-color: #99c7c8;
+    border-width: 3px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+#main-list li.list-item.active{
+    background-color: #99c7c8;
+}
+#main-list li.list-item:hover{
+    background-color: #6b8bac;
+    border-color: #6b8bac;
+    color: #f1faee;
+}
+#main-list li.list-item:last-of-type{
+    margin: 0;
+}
+
+/* Popup Styles */
+/* Meal Plan Popup */
+div.meal-plan-popup{
+    min-width: 60%;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: #457b9d;
+}
+div.meal-plan-popup h2{
+    width: 100%;
+    text-align: center;
+    padding: 0 0 20px 0;
+    font-size: 2em;
+    color: #f1faee;
+}
+div.popup-content div.add-edit-dialog-radios input[type='radio']{
+    display: none;
+}
+div.popup-content div.add-edit-dialog-radios{
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+div.popup-content div.add-edit-dialog-radios label{
+    padding: 10px;
+    background-color: #f1faee;
+    cursor: pointer;
+    margin: 0 20px 0 0;
+    border-radius: 10px;
+}
+div.popup-content div.add-edit-dialog-radios label:hover{
+    background-color: #99c7c8;
+}
+div.popup-content div.add-edit-dialog-radios label:last-of-type{
+    margin: 0;
+}
+div.popup-content div.add-edit-dialog-radios input[type="radio"]:checked+label{
+    background-color: #1d3557;
+    color: #f1faee
+}
+div.meal-forms-container{
+    position: relative;
+}
+div.new-meal-form.active,
+div.existing-meal-form.active{
+    opacity: 1;
+    max-height: 3000px;
+    z-index: 30;
+}
+div.new-meal-form{
+    overflow: hidden;
+    z-index: -30;
+    opacity: 0;
+    max-height: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    align-items: stretch;
+}
+div.new-meal-form input, 
+div.new-meal-form select{
+    padding: 10px;
+    margin: 10px auto;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+}
+div.new-meal-form input{
+    width: calc(100% - 20px);
+}
+div.new-meal-form input:focus, 
+div.new-meal-form select:focus{
+    box-shadow: 0 0 0 2pt #99c7c8;
+}
+div.existing-meal-form{
+    overflow: hidden;
+    z-index: -30;
+    opacity: 0;
+    max-height: 0;
+}
+div.existing-meal-dropdowns{
+    padding: 0 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+div.existing-meal-dropdowns select{
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    background-color: #f1faee;
+    color: #1d3557;    
+    margin: 0 20px 0 0;
+}
+div.existing-meal-dropdowns select:last-of-type{
+    margin: 0;
+}
+div.existing-meal-list{
+    /* padding: 20px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+div.existing-meal-list input{
+    display: none;
+}
+div.existing-meal-list label{
+    padding: 10px;
+    background-color: #f1faee;
+    color: #1d3557;
+    border-radius: 10px;
+    margin: 10px;
+    width: calc(50% - 40px);
+}
+div.existing-meal-list label:hover{
+    background-color: #99c7c8;
+}
+div.existing-meal-list input[type="radio"]:checked+label{
+    background-color: #1d3557;
+    color: #f1faee
+}
+div.add-edit-dialog-buttons{
+    margin: 20px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+div.add-edit-dialog-buttons button{
+    padding: 10px;
+    background-color: #f1faee;
+    border-radius: 10px;
+    margin: 0 20px 0 0;
+    border:none;
+}
+div.add-edit-dialog-buttons button:last-of-type{
+    margin: 0;
+}
+div.add-edit-dialog-buttons button:hover{
+    background-color: #1d3557;
+    color: #f1faee
+}
+
+/* Settings Styles */
+div.dark-mode-container{
+    position: relative;
+    z-index: 30;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+div.dark-mode-container h2{
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
+label.toggle{
+    display: block;
+    width: 50px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: gray;
+    position: relative;
+}
+label.toggle span.dark-mode-text{
+    position:relative;
+    margin-left: 5px;
+}
+label.toggle span.toggle-switch{
+    width: 23px;
+    height: 23px;
+    border-radius: 12px;
+    background-color: white;
+    border: 1px solid black;
+    position: absolute;
+    left: 0;
+}
+label.toggle.on{
+    background-color: green;
+}
+label.toggle.on span.toggle-switch{
+    left: 25px;
+}
+#dark-mode-check{
+    display: none;
+}
+button.delete-button{
+    border-color: #e63946;
+}
+button.delete-button:hover{
+    background-color: #e63946;
+}
+div.expanding-section-container{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    border-color: #457b9d;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 10px;
+}
+div.expanding-section-label{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+div.expanding-section-label p{
+    font-size: 1.3em;
+}
+a.expand-icon{
+    position: relative;
+    z-index: 20;
+    width: 25px;
+    height: 25px;
+    opacity: 0.3;
+    margin: 0 10px 0 0;
+}
+a.expand-icon:before,
+a.expand-icon:after{
+    right: 10px;
+    position: absolute;
+    content: ' ';
+    height: 25px;
+    width: 3px;
+    background-color: #1d3557;
+    transition: transform 0.3s ease;
+}
+a.expand-icon:before{
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+div.expanding-section-container.expanded a.expand-icon:before{
+    transform: rotate(-90deg);
+}
+div.expanding-section-container.expanded a.expand-icon:after{
+    transform: rotate(-90deg);
+}
+div.expanding-section-list{
+    width: 100%;
+    transition: all 0.5s ease;
+    max-height: 0;
+    /* padding: 0 10px; */
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    opacity: 0;
+}
+div.expanding-section-container.expanded div.expanding-section-list{
+    max-height: 2000px;
+    /* padding: 10px; */
+    opacity: 1;
+}
+div.expanding-section-container label{
+    padding: 10px;
+    width: calc(50% - 40px);
+    margin: 10px;
+
+}
+
+/* DARK MODE STYLES */
+body.dark-mode{
+    background-color: #1d3557;
+    color: #f1faee;
+}
+/* 
+    body.dark-mode button.main-button{}
+    body.dark-mode button.main-button:hover{}
+    body.dark-mode button.content-button{}
+    body.dark-mode button.content-button:hover{}
+    body.dark-mode #main-list li.meal-item{}
+    body.dark-mode #main-list li.meal-item.active{}
+    body.dark-mode#main-list li.meal-item:hover{}
+
+    ***radios***
+
+    a.expand-icon:before,
+a.expand-icon:after{}
+*/
